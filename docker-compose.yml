@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+    mytomcat:
+        build: tomcat   #builds tomcat image using dockerfile present in tomcat dir
+        ports:
+            - 8080:8080
+        networks:
+            - webstack
+        container_name: lyd-tomcat
+       
+    db:
+        image: mysql/mysql-server   #downloads official mysql image and builds it
+        environment:
+            - MYSQL_ROOT_PASSWORD=${root_pass}
+            - MYSQL_DATABASE=${database}
+            - MYSQL_USER=${user}
+            - MYSQL_PASSWORD=${password}
+        networks:
+            - webstack
+        container_name: lyd-mysql
+        volumes:
+            - mysqldata:/var/lib/mysql
+
+networks: 
+    webstack:
+        driver: bridge
+
+volumes:
+    mysqldata:
