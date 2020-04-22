@@ -3,7 +3,7 @@
 * cd /vagrant
 * docker-compose up -d
 * docker ps
-* Check port forwarding works
+* Check if port forwarding works
   1. curl localhost:8080 : displays
  => </h1>Welcome to tomcat from centos in docker</h1>
     </p>Hello</p>
